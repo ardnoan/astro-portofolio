@@ -1,211 +1,35 @@
---- 
-import MainLayout from "../layouts/MainLayout.astro"; 
-import ProjectsSection from "../components/ProjectSection.astro"; 
-import projects from "../data/projects.json"; 
----  
+---
+import MainLayout from "../layouts/MainLayout.astro";
+import ProjectsSection from "../components/ProjectSection.astro";
+import projects from "../data/projects.json";
+---
 
-<MainLayout   
-  title="Projects"   
-  description="Check out Ardian's web development projects" 
->   
-  <section class="projects-section">     
-    <div class="cyber-grid"></div>
-    <div class="glow-orbs">
-      <div class="orb orb-1"></div>
-      <div class="orb orb-2"></div>
+<MainLayout
+  title="Projects"
+  description="Check out Ardian's web development projects"
+>
+  <section class="section">
+    <div class="container">
+      <h1 class="section-title">My Projects</h1>hero
+
+      <div class="projects-intro">
+        <p>
+          Here's a collection of my recent work. Each project represents
+          different skills and technologies I've worked with. Feel free to
+          explore the code and live demos.
+        </p>
+      </div>
+
+      <ProjectsSection projects={projects} />
     </div>
-    
-    <div class="container">       
-      <h1 class="section-title">My <span class="highlight">Projects</span></h1>
-      
-      <div class="projects-intro">         
-        <p>           
-          Here's a collection of my recent work. Each project represents           
-          different skills and technologies I've worked with. Feel free to           
-          explore the code and live demos.         
-        </p>       
-      </div>        
-      
-      <ProjectsSection projects={projects} />     
-    </div>   
-  </section> 
-</MainLayout>  
+  </section>
+</MainLayout>
 
 <style>
-  @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700&family=Share+Tech+Mono&display=swap');
-
-  :root {
-    --primary-color: #2fe8e8;
-    --primary-glow: rgba(47, 232, 232, 0.7);
-    --primary-dark: #0a7b7b;
-    --secondary-color: #e844e8;
-    --secondary-glow: rgba(232, 68, 232, 0.6);
-    --bg-dark: #080b16;
-    --text-color: #e6edf3;
-  }
-
-  .projects-section {
-    position: relative;
-    padding: 6rem 0;
-    background-color: var(--bg-dark);
-    color: var(--text-color);
-    font-family: 'Share Tech Mono', monospace;
-    overflow: hidden;
-  }
-
-  /* Cyber Grid Background */
-  .cyber-grid {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    z-index: 0;
-    overflow: hidden;
-    opacity: 0.2;
-    background-image: 
-      linear-gradient(to right, rgba(47, 232, 232, 0.15) 1px, transparent 1px),
-      linear-gradient(to bottom, rgba(47, 232, 232, 0.15) 1px, transparent 1px);
-    background-size: 40px 40px;
-    transform: perspective(500px) rotateX(30deg);
-    transform-origin: top;
-  }
-  
-  /* Glowing Orbs */
-  .glow-orbs {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 1;
-    filter: blur(70px);
-    opacity: 0.4;
-    pointer-events: none;
-  }
-  
-  .orb {
-    position: absolute;
-    border-radius: 50%;
-  }
-  
-  .orb-1 {
-    top: 20%;
-    right: 10%;
-    width: 300px;
-    height: 300px;
-    background: radial-gradient(circle, var(--primary-glow) 0%, rgba(47, 232, 232, 0) 70%);
-    animation: float 20s ease-in-out infinite;
-  }
-  
-  .orb-2 {
-    bottom: 10%;
-    left: 5%;
-    width: 250px;
-    height: 250px;
-    background: radial-gradient(circle, var(--secondary-glow) 0%, rgba(232, 68, 232, 0) 70%);
-    animation: float 15s ease-in-out infinite reverse;
-  }
-  
-  @keyframes float {
-    0% { transform: translateY(0) translateX(0); }
-    25% { transform: translateY(-30px) translateX(15px); }
-    50% { transform: translateY(0) translateX(30px); }
-    75% { transform: translateY(30px) translateX(15px); }
-    100% { transform: translateY(0) translateX(0); }
-  }
-
-  .container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 2rem;
-    position: relative;
-    z-index: 2;
-  }
-
-  .section-title {
-    text-align: center;
-    font-size: 2.8rem;
-    margin-bottom: 2rem;
-    font-family: 'Orbitron', sans-serif;
-    font-weight: 700;
-    letter-spacing: 1px;
-    color: var(--text-color);
-    text-shadow: 0 0 10px rgba(47, 232, 232, 0.5);
-    position: relative;
-    display: inline-block;
-    left: 50%;
-    transform: translateX(-50%);
-  }
-
-  .highlight {
-    color: var(--primary-color);
-    position: relative;
-  }
-
-  .highlight::after {
-    content: '';
-    position: absolute;
-    bottom: -5px;
-    left: 0;
-    width: 100%;
-    height: 2px;
-    background: var(--primary-color);
-    box-shadow:
-      0 0 5px var(--primary-color),
-      0 0 10px var(--primary-color);
-  }
-
   .projects-intro {
     max-width: 800px;
-    margin: 0 auto 3rem;
+    margin: 0 auto 2rem;
     text-align: center;
     font-size: 1.1rem;
-    line-height: 1.6;
-    color: var(--text-color);
-    background: rgba(15, 25, 40, 0.5);
-    padding: 1.5rem;
-    border-radius: 8px;
-    border: 1px solid rgba(47, 232, 232, 0.2);
-    position: relative;
-    overflow: hidden;
-  }
-
-  .projects-intro::before {
-    content: '';
-    position: absolute;
-    top: -2px;
-    left: -2px;
-    right: -2px;
-    bottom: -2px;
-    background: linear-gradient(45deg, var(--primary-color), var(--secondary-color), var(--primary-color));
-    z-index: -1;
-    filter: blur(10px);
-    opacity: 0.5;
-  }
-
-  .projects-intro p {
-    position: relative;
-    z-index: 1;
-  }
-
-  @media (max-width: 768px) {
-    .section-title {
-      font-size: 2.2rem;
-    }
-    
-    .projects-intro {
-      padding: 1rem;
-      font-size: 1rem;
-    }
-    
-    .projects-section {
-      padding: 4rem 0;
-    }
-    
-    .orb-1, .orb-2 {
-      width: 150px;
-      height: 150px;
-    }
   }
 </style>
