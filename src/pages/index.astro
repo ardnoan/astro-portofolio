@@ -1,11 +1,31 @@
 ---
-import Welcome from '../components/Welcome.astro';
-import Layout from '../layouts/Layout.astro';
+import MainLayout from "../layouts/MainLayout.astro";
+import Hero from "../components/Hero.astro";
+import ProjectsSection from "../components/ProjectsSection.astro";
+import projects from "../data/projects.json";
 
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+// Get featured projects
+const featuredProjects = projects.filter((project) => project.featured);
 ---
 
-<Layout>
-	<Welcome />
-</Layout>
+<MainLayout title="Home">
+  <Hero />
+
+  <section class="section">
+    <div class="container">
+      <h2 class="section-title">Featured Projects</h2>
+      <ProjectsSection projects={featuredProjects} />
+
+      <div class="view-all">
+        <a href="/projects" class="btn">View All Projects</a>
+      </div>
+    </div>
+  </section>
+</MainLayout>
+
+<style>
+  .view-all {
+    margin-top: 2rem;
+    text-align: center;
+  }
+</style>
