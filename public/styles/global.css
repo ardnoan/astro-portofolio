@@ -2,14 +2,25 @@
 @import url("https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Share+Tech+Mono&display=swap");
 
 :root {
+  /* Primary colors */
   --primary-color: #2fe8e8;
   --primary-glow: rgba(47, 232, 232, 0.7);
+  --primary-dim: rgba(47, 232, 232, 0.2);
   --primary-dark: #0a7b7b;
+  
+  /* Secondary colors */
   --secondary-color: #e844e8;
   --secondary-glow: rgba(232, 68, 232, 0.6);
+  --secondary-dim: rgba(232, 68, 232, 0.2);
+  
+  /* Background colors */
   --bg-dark: #080b16;
   --light-bg: #0f1625;
+  
+  /* Text colors */
   --text-color: #e6edf3;
+  
+  /* Grid colors */
   --grid-color: rgba(47, 232, 232, 0.2);
 }
 
@@ -39,10 +50,10 @@ body::before {
   z-index: -1;
   background-image: linear-gradient(
       to right,
-      rgba(47, 232, 232, 0.05) 1px,
+      var(--grid-color) 1px,
       transparent 1px
     ),
-    linear-gradient(to bottom, rgba(47, 232, 232, 0.05) 1px, transparent 1px);
+    linear-gradient(to bottom, var(--grid-color) 1px, transparent 1px);
   background-size: 40px 40px;
   transform: perspective(1000px) rotateX(30deg);
   transform-origin: top;
@@ -324,7 +335,7 @@ textarea,
 select {
   width: 100%;
   padding: 0.8rem;
-  border: 1px solid rgba(47, 232, 232, 0.3);
+  border: 1px solid var(--primary-dim);
   border-radius: 4px;
   font-family: "Share Tech Mono", monospace;
   font-size: 1rem;
@@ -338,7 +349,7 @@ textarea:focus,
 select:focus {
   border-color: var(--primary-color);
   outline: none;
-  box-shadow: 0 0 10px rgba(47, 232, 232, 0.3);
+  box-shadow: 0 0 10px var(--primary-glow);
 }
 
 label {
@@ -351,8 +362,8 @@ label {
 
 /* Project card styling */
 .project-card {
-  background-color: rgba(15, 22, 37, 0.8);
-  border: 1px solid rgba(47, 232, 232, 0.2);
+  background-color: var(--light-bg);
+  border: 1px solid var(--primary-dim);
   border-radius: 8px;
   overflow: hidden;
   transition: all 0.3s ease;
@@ -380,7 +391,7 @@ label {
 .project-card:hover {
   transform: translateY(-5px);
   box-shadow: 0 12px 20px rgba(0, 0, 0, 0.4);
-  border-color: rgba(47, 232, 232, 0.5);
+  border-color: var(--primary-dim);
 }
 
 /* Contact item styling */
@@ -402,6 +413,116 @@ label {
   left: -7px;
   top: 10px;
   box-shadow: 0 0 8px var(--primary-glow);
+}
+
+/* Neon text effect */
+.neon-text {
+  color: var(--primary-color);
+  text-shadow: 0 0 10px var(--primary-glow);
+}
+
+/* Cyber glow effect for elements */
+@keyframes cyber-glow {
+  from {
+    text-shadow:
+      0 0 5px var(--primary-glow),
+      0 0 10px var(--primary-glow),
+      0 0 15px var(--primary-glow);
+  }
+  to {
+    text-shadow:
+      0 0 10px var(--primary-glow),
+      0 0 20px var(--primary-glow),
+      0 0 30px var(--primary-glow),
+      0 0 40px var(--secondary-glow);
+  }
+}
+
+/* Consistent cyberpunk styling for tech tags */
+.tech-tag {
+  font-size: 0.8rem;
+  padding: 0.2rem 0.6rem;
+  border-radius: 4px;
+  background-color: var(--primary-dim);
+  border: 1px solid var(--primary-dim);
+  color: var(--primary-color);
+  font-family: "Share Tech Mono", monospace;
+  letter-spacing: 0.5px;
+  transition: all 0.3s ease;
+}
+
+.tech-tag:hover {
+  background-color: rgba(47, 232, 232, 0.3);
+  box-shadow: 0 0 8px var(--primary-glow);
+}
+
+/* Cyberpunk style for social icons */
+.social-icon {
+  color: var(--text-color);
+  opacity: 0.8;
+  transition: all 0.3s ease;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.social-icon::before {
+  content: "";
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  border: 1px solid var(--primary-dim);
+  border-radius: 50%;
+  transform: scale(0.8);
+  opacity: 0;
+  transition: all 0.3s ease;
+}
+
+.social-icon:hover {
+  color: var(--primary-color);
+  transform: translateY(-3px);
+  filter: drop-shadow(0 0 5px var(--primary-glow));
+}
+
+.social-icon:hover::before {
+  transform: scale(1);
+  opacity: 0.4;
+}
+
+/* Contact icon styling */
+.contact-icon {
+  margin-right: 1rem;
+  color: var(--primary-color);
+  background-color: var(--primary-dim);
+  padding: 0.8rem;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Project links styling */
+.project-link.github {
+  background-color: var(--primary-dim);
+  color: var(--primary-color);
+  border-color: var(--primary-dim);
+}
+
+.project-link.live {
+  background-color: var(--secondary-dim);
+  color: var(--secondary-color);
+  border-color: var(--secondary-dim);
+}
+
+.project-link.github:hover {
+  background-color: rgba(47, 232, 232, 0.3);
+  box-shadow: 0 0 8px var(--primary-glow);
+}
+
+.project-link.live:hover {
+  background-color: rgba(232, 68, 232, 0.3);
+  box-shadow: 0 0 8px var(--secondary-glow);
 }
 
 /* Responsive design */
