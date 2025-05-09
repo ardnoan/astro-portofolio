@@ -1,5 +1,5 @@
 ---
-import MainLayout from "../layouts/MainLayout.astro";
+import MainLayout from "../layouts/Layout.astro";
 ---
 
 <MainLayout
@@ -8,7 +8,7 @@ import MainLayout from "../layouts/MainLayout.astro";
 >
   <section class="section">
     <div class="container">
-      <h1 class="section-title">Let's Connect</h1>
+      <h1 class="section-title" data-text="Let's Connect">Let's Connect</h1>
 
       <div class="contact-content">
         <div class="contact-info">
@@ -32,7 +32,7 @@ import MainLayout from "../layouts/MainLayout.astro";
               </svg>
             </div>
             <div class="contact-text">
-              <h3>Email</h3>
+              <h3 class="neon-text">Email</h3>
               <p>
                 <a href="mailto:ardian@example.com">ardian@example.com</a>
               </p>
@@ -58,7 +58,7 @@ import MainLayout from "../layouts/MainLayout.astro";
               </svg>
             </div>
             <div class="contact-text">
-              <h3>GitHub</h3>
+              <h3 class="neon-text">GitHub</h3>
               <p>
                 <a href="https://github.com/yourusername" target="_blank"
                   >github.com/yourusername</a
@@ -88,7 +88,7 @@ import MainLayout from "../layouts/MainLayout.astro";
               </svg>
             </div>
             <div class="contact-text">
-              <h3>LinkedIn</h3>
+              <h3 class="neon-text">LinkedIn</h3>
               <p>
                 <a href="https://linkedin.com/in/yourusername" target="_blank"
                   >linkedin.com/in/yourusername</a
@@ -98,7 +98,7 @@ import MainLayout from "../layouts/MainLayout.astro";
           </div>
         </div>
 
-        <div class="contact-form">
+        <div class="contact-form cyberpunk-form">
           <form id="contactForm">
             <div class="form-group">
               <label for="name">Name</label>
@@ -121,93 +121,15 @@ import MainLayout from "../layouts/MainLayout.astro";
               ></textarea>
             </div>
 
-            <button type="submit" class="btn submit-btn">Send Message</button>
+            <button type="submit" class="btn">Send Message</button>
           </form>
         </div>
       </div>
     </div>
   </section>
 </MainLayout>
+<link rel="stylesheet" href="/styles/global.css" />
 
-<style>
-  .contact-content {
-    display: grid;
-    grid-template-columns: 1fr 2fr;
-    gap: 3rem;
-    margin-top: 2rem;
-  }
-
-  .contact-item {
-    display: flex;
-    align-items: flex-start;
-    margin-bottom: 2rem;
-  }
-
-  .contact-icon {
-    margin-right: 1rem;
-    color: var(--primary-color);
-    background-color: rgba(52, 152, 219, 0.1);
-    padding: 0.8rem;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-
-  .contact-text h3 {
-    margin: 0 0 0.5rem;
-    font-size: 1.2rem;
-  }
-
-  .contact-text p {
-    margin: 0;
-    font-size: 1rem;
-  }
-
-  .form-group {
-    margin-bottom: 1.5rem;
-  }
-
-  label {
-    display: block;
-    margin-bottom: 0.5rem;
-    font-weight: 500;
-    color: var(--secondary-color);
-  }
-
-  input,
-  textarea {
-    width: 100%;
-    padding: 0.8rem;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    font-family: inherit;
-    font-size: 1rem;
-    transition: border-color 0.3s ease;
-  }
-
-  input:focus,
-  textarea:focus {
-    border-color: var(--primary-color);
-    outline: none;
-  }
-
-  .submit-btn {
-    padding: 0.8rem 2rem;
-    width: auto;
-    font-size: 1rem;
-  }
-
-  @media (max-width: 768px) {
-    .contact-content {
-      grid-template-columns: 1fr;
-    }
-
-    .contact-form {
-      margin-top: 2rem;
-    }
-  }
-</style>
 
 <script>
   document.addEventListener("DOMContentLoaded", () => {
@@ -232,9 +154,6 @@ import MainLayout from "../layouts/MainLayout.astro";
 
       // Show success message
       alert("Thank you for your message! I will get back to you soon.");
-
-      // Reset form
-      contactForm.reset();
     });
   });
 </script>

@@ -1,5 +1,5 @@
 ---
-import MainLayout from "../layouts/MainLayout.astro";
+import MainLayout from "../layouts/Layout.astro";
 import AboutSection from "../components/AboutSection.astro";
 ---
 
@@ -7,10 +7,13 @@ import AboutSection from "../components/AboutSection.astro";
   title="About"
   description="Learn about Ardian - web developer and designer"
 >
-  <section class="section">
+  <section class="section about-section">
     <div class="container">
-      <h1 class="section-title">About Me</h1>
-      <AboutSection />
+      <h1 class="section-title" data-text="About Me">About Me</h1>
+      <div class="cyberpunk-content">
+        <AboutSection />
+      </div>
     </div>
   </section>
 </MainLayout>
+<link rel="stylesheet" href="/styles/global.css" />

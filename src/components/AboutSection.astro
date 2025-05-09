@@ -40,10 +40,9 @@ const experience = [
 <div class="about-content">
   <div class="about-intro">
     <div class="about-image">
-      <img src="/assets/images/profile.jpg" alt="Ardian" />
+      <img src="/image.png" alt="Ardian" loading="lazy" />
     </div>
     <div class="about-text">
-      <h2>About Me</h2>
       <p>
         Hello! I'm Ardian, a passionate web developer with expertise in building
         responsive, user-friendly websites and applications. With a background
@@ -69,247 +68,51 @@ const experience = [
     <div class="section-skills">
       <h3>Skills</h3>
       <div class="skills-container">
-        {
-          skills.map((skillGroup) => (
-            <div class="skill-group">
-              <h4>{skillGroup.category}</h4>
-              <div class="skill-tags">
-                {skillGroup.items.map((skill) => (
-                  <span class="skill-tag">{skill}</span>
-                ))}
-              </div>
+        {skills.map((skillGroup, index) => (
+          <div class="skill-group">
+            <h4>{skillGroup.category}</h4>
+            <div class="skill-tags">
+              {skillGroup.items.map((skill, idx) => (
+                <span class="skill-tag">{skill}</span>
+              ))}
             </div>
-          ))
-        }
+          </div>
+        ))}
       </div>
     </div>
 
     <div class="section-experience">
       <h3>Experience</h3>
       <div class="timeline">
-        {
-          experience.map((item) => (
-            <div class="timeline-item">
-              <div class="timeline-dot" />
-              <div class="timeline-content">
-                <h4>{item.position}</h4>
-                <h5>{item.company}</h5>
-                <p class="timeline-period">{item.period}</p>
-                <p>{item.description}</p>
-              </div>
+        {experience.map((item, index) => (
+          <div class="timeline-item">
+            <div class="timeline-dot" />
+            <div class="timeline-content">
+              <h4>{item.position}</h4>
+              <h5>{item.company}</h5>
+              <p class="timeline-period">{item.period}</p>
+              <p>{item.description}</p>
             </div>
-          ))
-        }
+          </div>
+        ))}
       </div>
     </div>
 
     <div class="section-education">
       <h3>Education</h3>
       <div class="timeline">
-        {
-          education.map((item) => (
-            <div class="timeline-item">
-              <div class="timeline-dot" />
-              <div class="timeline-content">
-                <h4>{item.degree}</h4>
-                <h5>{item.institution}</h5>
-                <p class="timeline-period">{item.period}</p>
-                <p>{item.description}</p>
-              </div>
+        {education.map((item, index) => (
+          <div class="timeline-item">
+            <div class="timeline-dot" />
+            <div class="timeline-content">
+              <h4>{item.degree}</h4>
+              <h5>{item.institution}</h5>
+              <p class="timeline-period">{item.period}</p>
+              <p>{item.description}</p>
             </div>
-          ))
-        }
+          </div>
+        ))}
       </div>
     </div>
   </div>
 </div>
-
-<style>
-  .about-content {
-    display: flex;
-    flex-direction: column;
-    gap: 3rem;
-  }
-
-  .about-intro {
-    display: grid;
-    grid-template-columns: 1fr 2fr;
-    gap: 2rem;
-    align-items: center;
-  }
-
-  .about-image {
-    position: relative;
-    border-radius: 10px;
-    overflow: hidden;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-  }
-
-  .about-image img {
-    width: 100%;
-    height: auto;
-    display: block;
-    transition: transform 0.3s ease;
-  }
-
-  .about-image:hover img {
-    transform: scale(1.03);
-  }
-
-  .about-text h2 {
-    margin-top: 0;
-    color: var(--secondary-color);
-    font-size: 2.5rem;
-    position: relative;
-    margin-bottom: 1.5rem;
-  }
-
-  .about-text h2:after {
-    content: "";
-    position: absolute;
-    bottom: -8px;
-    left: 0;
-    width: 60px;
-    height: 3px;
-    background-color: var(--primary-color);
-  }
-
-  .about-text p {
-    margin-bottom: 1rem;
-    line-height: 1.7;
-  }
-
-  .about-sections {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 3rem;
-  }
-
-  .section-skills h3,
-  .section-experience h3,
-  .section-education h3 {
-    position: relative;
-    margin-bottom: 1.5rem;
-    font-size: 1.8rem;
-    color: var(--secondary-color);
-  }
-
-  .section-skills h3:after,
-  .section-experience h3:after,
-  .section-education h3:after {
-    content: "";
-    position: absolute;
-    bottom: -8px;
-    left: 0;
-    width: 40px;
-    height: 3px;
-    background-color: var(--primary-color);
-  }
-
-  .skills-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    gap: 1.5rem;
-  }
-
-  .skill-group h4 {
-    margin-top: 0;
-    margin-bottom: 1rem;
-    color: var(--secondary-color);
-    font-size: 1.2rem;
-  }
-
-  .skill-tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.5rem;
-  }
-
-  .skill-tag {
-    background-color: var(--light-bg);
-    color: var(--secondary-color);
-    padding: 0.4rem 1rem;
-    border-radius: 20px;
-    font-size: 0.9rem;
-    font-weight: 500;
-    transition: all 0.3s ease;
-  }
-
-  .skill-tag:hover {
-    background-color: var(--primary-color);
-    color: white;
-    transform: translateY(-2px);
-  }
-
-  .timeline {
-    position: relative;
-    padding-left: 2rem;
-  }
-
-  .timeline:before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 7px;
-    height: 100%;
-    width: 2px;
-    background-color: var(--light-bg);
-  }
-
-  .timeline-item {
-    position: relative;
-    margin-bottom: 2rem;
-  }
-
-  .timeline-dot {
-    position: absolute;
-    left: -2rem;
-    top: 5px;
-    width: 16px;
-    height: 16px;
-    border-radius: 50%;
-    background-color: var(--primary-color);
-    border: 3px solid white;
-    box-shadow: 0 0 0 2px var(--primary-color);
-  }
-
-  .timeline-content {
-    background-color: white;
-    padding: 1.5rem;
-    border-radius: 8px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-  }
-
-  .timeline-content h4 {
-    margin-top: 0;
-    color: var(--secondary-color);
-    font-size: 1.2rem;
-  }
-
-  .timeline-content h5 {
-    color: var(--primary-color);
-    margin: 0.5rem 0;
-    font-size: 1.1rem;
-  }
-
-  .timeline-period {
-    color: #666;
-    font-size: 0.9rem;
-    margin-bottom: 1rem;
-  }
-
-  @media (max-width: 768px) {
-    .about-intro {
-      grid-template-columns: 1fr;
-    }
-
-    .about-image {
-      max-width: 300px;
-      margin: 0 auto;
-    }
-
-    .skills-container {
-      grid-template-columns: 1fr;
-    }
-  }
-</style>

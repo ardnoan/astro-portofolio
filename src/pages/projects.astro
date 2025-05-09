@@ -1,5 +1,5 @@
 ---
-import MainLayout from "../layouts/MainLayout.astro";
+import MainLayout from "../layouts/Layout.astro";
 import ProjectsSection from "../components/ProjectSection.astro";
 import projects from "../data/projects.json";
 ---
@@ -8,12 +8,12 @@ import projects from "../data/projects.json";
   title="Projects"
   description="Check out Ardian's web development projects"
 >
-  <section class="section">
+  <section class="section projects-section">
     <div class="container">
-      <h1 class="section-title">My Projects</h1>hero
+      <h1 class="section-title" data-text="My Projects">My Projects</h1>
 
       <div class="projects-intro">
-        <p>
+        <p class="cyber-text">
           Here's a collection of my recent work. Each project represents
           different skills and technologies I've worked with. Feel free to
           explore the code and live demos.
@@ -24,12 +24,4 @@ import projects from "../data/projects.json";
     </div>
   </section>
 </MainLayout>
-
-<style>
-  .projects-intro {
-    max-width: 800px;
-    margin: 0 auto 2rem;
-    text-align: center;
-    font-size: 1.1rem;
-  }
-</style>
+<link rel="stylesheet" href="/styles/global.css" />
