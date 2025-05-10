@@ -199,15 +199,6 @@ p {
   z-index: -1;
 }
 
-.btn:hover::before {
-  left: 100%;
-}
-
-.btn:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 0 20px var(--primary-glow);
-}
-
 .btn-outline {
   background: transparent;
   border: 2px solid var(--primary-color);
@@ -227,14 +218,6 @@ p {
   background: var(--primary-color);
   transition: 0.5s;
   z-index: -1;
-}
-
-.btn-outline:hover {
-  color: var(--bg-dark);
-}
-
-.btn-outline:hover::after {
-  width: 100%;
 }
 
 .section {
@@ -515,43 +498,9 @@ label {
 }
 
 .about-section {
+  margin-top: -2rem;;
   position: relative;
-  overflow: hidden;
-  background-color: var(--bg-dark);
-  color: var(--text-color);
-  padding: 4rem 0;
-  font-family: "Share Tech Mono", monospace;
-}
-
-.about-section::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  z-index: 0;
-  overflow: hidden;
-  opacity: 0.25;
-  background-image: linear-gradient(
-      to right,
-      rgba(47, 232, 232, 0.15) 1px,
-      transparent 1px
-    ),
-    linear-gradient(to bottom, rgba(47, 232, 232, 0.15) 1px, transparent 1px);
-  background-size: 40px 40px;
-  transform: perspective(500px) rotateX(30deg);
-  transform-origin: top;
-  animation: grid-motion 20s linear infinite;
-}
-
-@keyframes grid-motion {
-  0% {
-    background-position: 0 0;
-  }
-  100% {
-    background-position: 0 40px;
-  }
+  /* overflow: hidden; */
 }
 
 .section-title {
@@ -600,46 +549,11 @@ label {
   position: relative;
   z-index: 2;
   margin: 0 auto;
-  padding: 0 2rem;
 }
 
 .cyberpunk-content {
+  padding: 0 2rem;
   position: relative;
-  z-index: 1;
-  padding: 2rem;
-  /* background-color: rgba(8, 11, 22, 0.7); */
-  border: 1px solid var(--primary-color);
-  border-radius: 4px;
-  box-shadow: 0 0 20px var(--primary-glow);
-  backdrop-filter: blur(5px);
-}
-
-.cyberpunk-content::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 2px;
-  background: linear-gradient(
-    90deg,
-    transparent,
-    var(--primary-color),
-    transparent
-  );
-  animation: scan-line 3s linear infinite;
-}
-
-@keyframes scan-line {
-  0% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(calc(100% - 2px));
-  }
-  100% {
-    transform: translateY(0);
-  }
 }
 
 /* About Content Styles */
@@ -655,24 +569,65 @@ label {
   gap: 2rem;
   align-items: center;
 }
-
 .about-image {
   position: relative;
-  border-radius: 4px;
+  border-radius: 50%;
   overflow: hidden;
-  box-shadow: 0 0 20px var(--primary-glow);
-  border: 1px solid var(--primary-color);
+  background: rgba(8, 11, 22, 0.6);
+  transform: perspective(800px) rotateX(3deg);
+  transition: transform 0.3s ease;
+  /* Sedikit bayangan neon untuk kesan cyberpunk */
+  /* box-shadow: 0 0 10px rgba(0, 255, 255, 0.3); */
+}
+
+.about-image:hover {
+  transform: perspective(800px) rotateX(0deg) scale(1.01);
+  /* box-shadow: 0 0 15px rgba(0, 255, 255, 0.5), 0 0 30px rgba(255, 0, 255, 0.2); */
 }
 
 .about-image img {
   width: 100%;
   height: auto;
   display: block;
-  transition: transform 0.3s ease;
+  opacity: 0.92;
+  transition: all 0.4s ease;
+  z-index: 2;
+  position: relative;
+  /* Efek bayangan yang mengikuti bentuk gambar, mirip text-shadow */
+  filter: drop-shadow(0 0 8px rgba(0, 255, 255, 0.6))
+    drop-shadow(0 0 12px rgba(0, 255, 255, 0.4));
 }
 
 .about-image:hover img {
   transform: scale(1.03);
+  opacity: 1;
+  /* Efek glow sedikit lebih kuat saat hover */
+  filter: drop-shadow(0 0 10px rgba(0, 255, 255, 0.7))
+    drop-shadow(0 0 15px rgba(0, 255, 255, 0.5))
+    drop-shadow(0 0 2px rgba(255, 0, 255, 0.4));
+}
+
+/* Efek hologram halus */
+.about-image::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  /* background: linear-gradient(
+    135deg,
+    rgba(0, 255, 255, 0.05) 25%,
+    rgba(255, 0, 255, 0.05) 50%,
+    rgba(0, 255, 255, 0.05) 75%
+  ); */
+  z-index: 1;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.about-image:hover::before {
+  opacity: 1;
 }
 
 .about-text h2 {
@@ -699,12 +654,6 @@ label {
   margin-bottom: 1rem;
   line-height: 1.7;
   color: var(--text-color);
-}
-
-.about-sections {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 3rem;
 }
 
 /* Skills Section */

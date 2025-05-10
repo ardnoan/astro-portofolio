@@ -44,22 +44,10 @@ const experience = [
     </div>
     <div class="about-text">
       <p>
-        Hello! I'm Ardian, a passionate web developer with expertise in building
-        responsive, user-friendly websites and applications. With a background
-        in computer science and several years of experience in web development,
-        I strive to create digital experiences that are both visually appealing
-        and highly functional.
-      </p>
+        Hallo bro, I'm Ardi
       <p>
-        My journey in web development started during my university years, and
-        since then, I've been constantly learning and adapting to new
-        technologies and best practices in the industry. I enjoy solving complex
-        problems and turning ideas into reality through code.
-      </p>
-      <p>
-        When I'm not coding, you can find me exploring new technologies,
-        contributing to open-source projects, or sharing my knowledge through my
-        learning documentation website.
+        Let's build something impactful — whether it's code, stories, or ideas
+        worth sharing.
       </p>
     </div>
   </div>
@@ -68,50 +56,56 @@ const experience = [
     <div class="section-skills">
       <h3>Skills</h3>
       <div class="skills-container">
-        {skills.map((skillGroup, index) => (
-          <div class="skill-group">
-            <h4>{skillGroup.category}</h4>
-            <div class="skill-tags">
-              {skillGroup.items.map((skill, idx) => (
-                <span class="skill-tag">{skill}</span>
-              ))}
+        {
+          skills.map((skillGroup, index) => (
+            <div class="skill-group">
+              <h4>{skillGroup.category}</h4>
+              <div class="skill-tags">
+                {skillGroup.items.map((skill, idx) => (
+                  <span class="skill-tag">{skill}</span>
+                ))}
+              </div>
             </div>
-          </div>
-        ))}
+          ))
+        }
       </div>
     </div>
 
     <div class="section-experience">
       <h3>Experience</h3>
       <div class="timeline">
-        {experience.map((item, index) => (
-          <div class="timeline-item">
-            <div class="timeline-dot" />
-            <div class="timeline-content">
-              <h4>{item.position}</h4>
-              <h5>{item.company}</h5>
-              <p class="timeline-period">{item.period}</p>
-              <p>{item.description}</p>
+        {
+          experience.map((item, index) => (
+            <div class="timeline-item">
+              <div class="timeline-dot" />
+              <div class="timeline-content">
+                <h4>{item.position}</h4>
+                <h5>{item.company}</h5>
+                <p class="timeline-period">{item.period}</p>
+                <p>{item.description}</p>
+              </div>
             </div>
-          </div>
-        ))}
+          ))
+        }
       </div>
     </div>
 
     <div class="section-education">
       <h3>Education</h3>
       <div class="timeline">
-        {education.map((item, index) => (
-          <div class="timeline-item">
-            <div class="timeline-dot" />
-            <div class="timeline-content">
-              <h4>{item.degree}</h4>
-              <h5>{item.institution}</h5>
-              <p class="timeline-period">{item.period}</p>
-              <p>{item.description}</p>
+        {
+          education.map((item, index) => (
+            <div class="timeline-item">
+              <div class="timeline-dot" />
+              <div class="timeline-content">
+                <h4>{item.degree}</h4>
+                <h5>{item.institution}</h5>
+                <p class="timeline-period">{item.period}</p>
+                <p>{item.description}</p>
+              </div>
             </div>
-          </div>
-        ))}
+          ))
+        }
       </div>
     </div>
   </div>
