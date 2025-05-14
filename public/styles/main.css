@@ -1,0 +1,11 @@
+/* main.css */
+@import "base/_variables.css";
+@import "base/_reset.css";
+@import "components/_buttons.css";
+@import "components/_cards.css";
+@import "utilities/_animations.css";
+@import "contact.css";
+@import "footer.css";
+@import "header.css";
+@import "hero.css";
+@import "global.css";
