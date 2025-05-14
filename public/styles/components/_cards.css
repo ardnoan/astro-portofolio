@@ -1,18 +1,14 @@
 @import url("https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700&family=Share+Tech+Mono&display=swap");
 
-:root {
-  --primary-color: #2fe8e8;
-  --primary-glow: rgba(47, 232, 232, 0.7);
-  --primary-dark: #0a7b7b;
-  --secondary-color: #e844e8;
-  --secondary-glow: rgba(232, 68, 232, 0.6);
-  --bg-dark: #080b16;
-  --bg-darker: #050810;
-  --card-bg: rgba(15, 20, 35, 0.9);
-  --text-color: #e6edf3;
-  --light-bg: rgba(47, 232, 232, 0.1);
+/* Projects Container */
+.projects-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
 }
 
+/* Project Card */
 .project-card {
   background-color: var(--card-bg);
   border-radius: 8px;
@@ -25,29 +21,32 @@
   position: relative;
   font-family: "Share Tech Mono", monospace;
   border: 1px solid rgba(47, 232, 232, 0.3);
+  z-index: 1;
 }
 
 /* Glowing border effect */
 .project-card::before {
   content: "";
   position: absolute;
-  top: -1px;
-  left: -1px;
-  right: -1px;
-  bottom: -1px;
-  border-radius: 8px;
-  padding: 1px;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  border-radius: 10px;
   background: linear-gradient(
     45deg,
     transparent,
     var(--primary-color),
     transparent
   );
+  background-size: 400% 400%;
+  z-index: -1;
   -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
   -webkit-mask-composite: xor;
   mask-composite: exclude;
   opacity: 0;
   transition: opacity 0.3s ease;
+  animation: border-animation 3s ease infinite;
 }
 
 .project-card:hover {
@@ -59,18 +58,6 @@
 .project-card:hover::before {
   opacity: 1;
   animation: border-flow 3s linear infinite;
-}
-
-@keyframes border-flow {
-  0% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
-  100% {
-    background-position: 0% 50%;
-  }
 }
 
 .project-card.featured {
@@ -95,26 +82,7 @@
   animation: scan-line 3s linear infinite;
 }
 
-@keyframes scan-line {
-  0% {
-    width: 0;
-    left: 0;
-  }
-  50% {
-    width: 100%;
-    left: 0;
-  }
-  51% {
-    width: 100%;
-    right: 0;
-  }
-  100% {
-    width: 0;
-    right: 0;
-    left: auto;
-  }
-}
-
+/* Project Image */
 .project-image {
   position: relative;
   height: 200px;
@@ -166,6 +134,7 @@
   transform: scale(1.05);
 }
 
+/* Featured Badge */
 .featured-badge {
   position: absolute;
   top: 1rem;
@@ -187,18 +156,7 @@
   animation: pulse 2s infinite;
 }
 
-@keyframes pulse {
-  0% {
-    box-shadow: 0 0 0 0 rgba(47, 232, 232, 0.7);
-  }
-  70% {
-    box-shadow: 0 0 0 10px rgba(47, 232, 232, 0);
-  }
-  100% {
-    box-shadow: 0 0 0 0 rgba(47, 232, 232, 0);
-  }
-}
-
+/* Project Content */
 .project-content {
   padding: 1.5rem;
   display: flex;
@@ -206,19 +164,24 @@
   flex: 1;
   position: relative;
   z-index: 1;
+  height: 100%;
 }
 
+.project-header {
+  margin-bottom: 1rem;
+}
+
+/* Project Title */
 .project-title {
-  margin-top: 0;
-  margin-bottom: 0.75rem;
-  color: var(--primary-color);
-  font-size: 1.25rem;
   font-family: "Orbitron", sans-serif;
-  letter-spacing: 0.5px;
+  font-size: 1.25rem;
+  margin: 0 0 0.75rem 0;
+  color: var(--primary-color);
   text-shadow: 0 0 5px rgba(47, 232, 232, 0.5);
   font-weight: 600;
   position: relative;
   display: inline-block;
+  letter-spacing: 1px;
 }
 
 .project-title::after {
@@ -232,14 +195,17 @@
   box-shadow: 0 0 8px var(--primary-color);
 }
 
+/* Project Description */
 .project-description {
   color: var(--text-color);
   font-size: 0.95rem;
   margin-bottom: 1.5rem;
   flex: 1;
   line-height: 1.6;
+  font-family: "Share Tech Mono", monospace;
 }
 
+/* Tech Tags */
 .project-tech {
   display: flex;
   flex-wrap: wrap;
@@ -248,7 +214,7 @@
 }
 
 .tech-tag {
-  background-color: var(--light-bg);
+  background-color: rgba(47, 232, 232, 0.1);
   color: var(--primary-color);
   padding: 0.25rem 0.75rem;
   border-radius: 20px;
@@ -256,6 +222,8 @@
   font-weight: 500;
   border: 1px solid rgba(47, 232, 232, 0.3);
   transition: all 0.3s ease;
+  font-family: "Share Tech Mono", monospace;
+  letter-spacing: 0.5px;
 }
 
 .tech-tag:hover {
@@ -263,12 +231,14 @@
   box-shadow: 0 0 8px rgba(47, 232, 232, 0.5);
 }
 
+/* Project Links */
 .project-links {
   display: flex;
   gap: 1rem;
   margin-top: auto;
 }
 
+/* Default Button Style */
 .project-links .btn {
   display: flex;
   align-items: center;
@@ -320,6 +290,7 @@
   box-shadow: 0 0 15px rgba(47, 232, 232, 0.6);
 }
 
+/* Outline Button Style */
 .btn-outline {
   background: transparent !important;
   border: 1px solid var(--primary-color) !important;
@@ -352,14 +323,118 @@
   z-index: 2;
 }
 
+/* Alternative Link Styles */
+.project-link {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: "Share Tech Mono", monospace;
+  font-size: 0.9rem;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+  border: 1px solid rgba(47, 232, 232, 0.3);
+}
+
+.project-link:hover {
+  transform: translateY(-2px);
+}
+
+.project-link.github {
+  background-color: rgba(47, 232, 232, 0.1);
+  color: var(--primary-color);
+}
+
+.project-link.live {
+  background-color: rgba(232, 68, 232, 0.1);
+  color: var(--secondary-color);
+  border-color: rgba(232, 68, 232, 0.3);
+}
+
+.project-link.github:hover {
+  background-color: rgba(47, 232, 232, 0.2);
+  box-shadow: 0 0 8px var(--primary-glow);
+}
+
+.project-link.live:hover {
+  background-color: rgba(232, 68, 232, 0.2);
+  box-shadow: 0 0 8px var(--secondary-glow);
+}
+
+.link-icon {
+  display: flex;
+  align-items: center;
+}
+
 /* SVG styling */
 svg {
   stroke: currentColor;
   transition: all 0.3s ease;
 }
 
+/* Media Queries */
 @media (max-width: 768px) {
+  .projects-container {
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  }
+
   .project-links {
     flex-direction: column;
+  }
+}
+
+@media (max-width: 480px) {
+  .projects-container {
+    grid-template-columns: 1fr;
+  }
+
+  .project-title {
+    font-size: 1.3rem;
+  }
+}
+
+/* Animation Keyframes */
+@keyframes border-flow {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@keyframes border-animation {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@keyframes scan-line {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 10px rgba(47, 232, 232, 0.7);
+  }
+  50% {
+    box-shadow: 0 0 20px rgba(47, 232, 232, 0.9);
+  }
+  100% {
+    box-shadow: 0 0 10px rgba(47, 232, 232, 0.7);
   }
 }

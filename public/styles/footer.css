@@ -1,13 +1,6 @@
 /* Google Fonts import */
 @import url("https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700&family=Share+Tech+Mono&display=swap");
 
-:root {
-  --cyber-primary: #2fe8e8;
-  --cyber-primary-glow: rgba(46, 232, 232, 0.8);
-  --cyber-primary-dim: rgba(46, 232, 232, 0.2);
-  --cyber-bg-dark: rgba(13, 15, 20, 0.95);
-  --cyber-text: #e2e2e2;
-}
 
 .cyber-footer {
   /* background-color: var(--cyber-bg-dark); */
@@ -114,15 +107,6 @@
 
 .footer-bottom p {
   animation: pulseOpacity 4s infinite alternate;
-}
-
-@keyframes pulseOpacity {
-  0% {
-    opacity: 0.7;
-  }
-  100% {
-    opacity: 1;
-  }
 }
 
 @media (max-width: 768px) {

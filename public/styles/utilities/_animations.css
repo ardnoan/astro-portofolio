@@ -1,0 +1,129 @@
+@keyframes border-flow {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+@keyframes scan-line {
+    0% {
+        left: 0;
+        right: 100%;
+    }
+    50% {
+        left: 0;
+        right: 0;
+    }
+    100% {
+        left: 100%;
+        right: 0;
+    }
+}
+
+@keyframes pulse {
+    0% {
+        box-shadow: 0 0 0 0 rgba(47, 232, 232, 0.7);
+    }
+    70% {
+        box-shadow: 0 0 0 10px rgba(47, 232, 232, 0);
+    }
+    100% {
+        box-shadow: 0 0 0 0 rgba(47, 232, 232, 0);
+    }
+}
+
+@keyframes pulseOpacity {
+    0% {
+        opacity: 0.7;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes grid-motion {
+    0% {
+        background-position: 0 0;
+    }
+    100% {
+        background-position: 0 40px;
+    }
+}
+
+@keyframes glitch {
+    0% {
+        transform: translate(0);
+    }
+    20% {
+        transform: translate(-3px, 3px);
+    }
+    40% {
+        transform: translate(-3px, -3px);
+    }
+    60% {
+        transform: translate(3px, 3px);
+    }
+    80% {
+        transform: translate(3px, -3px);
+    }
+    100% {
+        transform: translate(0);
+    }
+}
+
+@keyframes float {
+    0% {
+        transform: translateY(0) translateX(0);
+    }
+    25% {
+        transform: translateY(-20px) translateX(10px);
+    }
+    50% {
+        transform: translateY(0) translateX(25px);
+    }
+    75% {
+        transform: translateY(20px) translateX(10px);
+    }
+    100% {
+        transform: translateY(0) translateX(0);
+    }
+}
+
+@keyframes cyber-glow {
+    from {
+        text-shadow: 0 0 5px var(--primary-glow), 0 0 10px var(--primary-glow),
+            0 0 15px var(--primary-glow);
+    }
+    to {
+        text-shadow: 0 0 10px var(--primary-glow), 0 0 20px var(--primary-glow),
+            0 0 30px var(--primary-glow), 0 0 40px var(--secondary-glow);
+    }
+}
+
+@keyframes fade-in {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes border-animation {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}

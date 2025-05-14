@@ -1,28 +1,7 @@
 /* Base Styles */
 @import url("https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Share+Tech+Mono&display=swap");
 
-:root {
-  /* Primary colors */
-  --primary-color: #2fe8e8;
-  --primary-glow: rgba(47, 232, 232, 0.7);
-  --primary-dim: rgba(47, 232, 232, 0.2);
-  --primary-dark: #0a7b7b;
 
-  /* Secondary colors */
-  --secondary-color: #e844e8;
-  --secondary-glow: rgba(232, 68, 232, 0.6);
-  --secondary-dim: rgba(232, 68, 232, 0.2);
-
-  /* Background colors */
-  --bg-dark: #080b16;
-  --light-bg: #0f1625;
-
-  /* Text colors */
-  --text-color: #e6edf3;
-
-  /* Grid colors */
-  --grid-color: rgba(47, 232, 232, 0.2);
-}
 
 * {
   box-sizing: border-box;
@@ -37,14 +16,6 @@ body {
   background-color: var(--bg-dark);
   overflow-x: hidden;
   position: relative;
-}
-@keyframes grid-motion {
-  0% {
-    background-position: 0 0;
-  }
-  100% {
-    background-position: 0 40px;
-  }
 }
 
 a {
@@ -130,26 +101,6 @@ h6 {
   transform: translate(-2px, -2px);
 }
 
-@keyframes glitch {
-  0% {
-    transform: translate(0);
-  }
-  20% {
-    transform: translate(-2px, 2px);
-  }
-  40% {
-    transform: translate(-2px, -2px);
-  }
-  60% {
-    transform: translate(2px, 2px);
-  }
-  80% {
-    transform: translate(2px, -2px);
-  }
-  100% {
-    transform: translate(0);
-  }
-}
 
 p {
   margin-bottom: 1rem;
@@ -252,24 +203,6 @@ p {
   z-index: 0;
 }
 
-@keyframes float {
-  0% {
-    transform: translateY(0) translateX(0);
-  }
-  25% {
-    transform: translateY(-20px) translateX(10px);
-  }
-  50% {
-    transform: translateY(0) translateX(25px);
-  }
-  75% {
-    transform: translateY(20px) translateX(10px);
-  }
-  100% {
-    transform: translateY(0) translateX(0);
-  }
-}
-
 /* Form styling with cyberpunk theme */
 input,
 textarea,
@@ -367,17 +300,6 @@ label {
   text-shadow: 0 0 10px var(--primary-glow);
 }
 
-/* Cyber glow effect for elements */
-@keyframes cyber-glow {
-  from {
-    text-shadow: 0 0 5px var(--primary-glow), 0 0 10px var(--primary-glow),
-      0 0 15px var(--primary-glow);
-  }
-  to {
-    text-shadow: 0 0 10px var(--primary-glow), 0 0 20px var(--primary-glow),
-      0 0 30px var(--primary-glow), 0 0 40px var(--secondary-glow);
-  }
-}
 
 /* Consistent cyberpunk styling for tech tags */
 .tech-tag {
@@ -524,26 +446,6 @@ label {
   animation: glitch 3s infinite;
 }
 
-@keyframes glitch {
-  0% {
-    transform: translate(0);
-  }
-  20% {
-    transform: translate(-3px, 3px);
-  }
-  40% {
-    transform: translate(-3px, -3px);
-  }
-  60% {
-    transform: translate(3px, 3px);
-  }
-  80% {
-    transform: translate(3px, -3px);
-  }
-  100% {
-    transform: translate(0);
-  }
-}
 
 .container {
   position: relative;
@@ -827,24 +729,6 @@ label {
     rgba(232, 68, 232, 0) 70%
   );
   animation: float 18s ease-in-out infinite reverse;
-}
-
-@keyframes float {
-  0% {
-    transform: translateY(0) translateX(0);
-  }
-  25% {
-    transform: translateY(-20px) translateX(10px);
-  }
-  50% {
-    transform: translateY(0) translateX(25px);
-  }
-  75% {
-    transform: translateY(20px) translateX(10px);
-  }
-  100% {
-    transform: translateY(0) translateX(0);
-  }
 }
 
 /* Responsive Design */
