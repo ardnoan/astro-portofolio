@@ -1,38 +1,51 @@
 ---
 // Define skills
 const skills = [
-  { category: "Frontend", items: ["HTML", "CSS", "JavaScript", "React"] },
-  { category: "Backend", items: ["Node.js", "Express", "PHP"] },
-  { category: "Tools", items: ["Git", "VSCode", "Docker", "Figma"] },
-  { category: "Database", items: ["MySQL", "MongoDB"] },
+  {
+    category: "Frontend",
+    items: ["HTML", "CSS", "JavaScript", "React", "Vue.js", "Astro"],
+  },
+  { category: "Backend", items: ["PHP", "Node.js", "Laravel", "Lumen"] },
+  { category: "Database", items: ["MySQL", "Oracle", "TOAD"] },
+  {
+    category: "Tools",
+    items: ["Git", "VSCode", "Linux", "JSON", "Arduino", "C", "Java"],
+  },
 ];
 
 // Define education
 const education = [
   {
-    degree: "Bachelor of Computer Science",
-    institution: "University of Technology",
-    period: "2018 - 2022",
+    degree: "Bachelor of Informatics Engineering (in progress)",
+    institution: "Universitas Sangga Buana YPKP",
+    period: "2024 – Now",
     description:
-      "Studied computer science with a focus on web development and software engineering.",
+      "Currently pursuing a bachelor's degree while managing work and personal development to become a skilled IT professional.",
+  },
+  {
+    degree: "Vocational High School – Computer and Network Engineering",
+    institution: "SMK Negeri 1 Cidaun",
+    period: "2021 – 2024",
+    description:
+      "Originally specialized in networking (TKJ) but self-taught and transitioned into software development and web technologies beyond the intended field of study.",
   },
 ];
 
 // Define experience
 const experience = [
   {
-    position: "Frontend Developer",
-    company: "Tech Solutions Inc.",
-    period: "2022 - Present",
+    position: "Full Stack Web Developer",
+    company: "PT Triklin Rekatama",
+    period: "Aug 2024 – Nov 2024",
     description:
-      "Developing responsive web applications using modern frontend technologies.",
+      "Developed and maintained both frontend and backend components of web applications. Worked with technologies such as Laravel, Node.js, MySQL, and Git.",
   },
   {
-    position: "Web Design Intern",
-    company: "Creative Studio",
-    period: "2021 - 2022",
+    position: "Participant",
+    company: "ASEAN Data Science Explorers 2024 Enablement Session",
+    period: "May 2024",
     description:
-      "Assisted in designing and implementing website interfaces for various clients.",
+      "Participated in online training sessions focused on SAP Analytics Cloud and SAP Build Apps. Gained insights into data analytics and low-code development tools. Certificate No. 3108/SERT/24-DSI-04/V/2024.",
   },
 ];
 ---
@@ -44,69 +57,70 @@ const experience = [
     </div>
     <div class="about-text">
       <p>
-        Hallo bro, I'm Ardi
-      <p>
-        Let's build something impactful — whether it's code, stories, or ideas
-        worth sharing.
+        Hello, my name is Ardi, a website developer and computer technician. I
+        am a student while also working in software engineering, and I am only
+        19 years old.
       </p>
+      Let's build something impactful — whether it's code, stories, or ideas worth
+      sharing.
+    </div>
+  </div>
+</div>
+
+<div class="about-sections">
+  <div class="section-skills">
+    <h3>Skills</h3>
+    <div class="skills-container">
+      {
+        skills.map((skillGroup, index) => (
+          <div class="skill-group">
+            <h4>{skillGroup.category}</h4>
+            <div class="skill-tags">
+              {skillGroup.items.map((skill, idx) => (
+                <span class="skill-tag">{skill}</span>
+              ))}
+            </div>
+          </div>
+        ))
+      }
     </div>
   </div>
 
-  <div class="about-sections">
-    <div class="section-skills">
-      <h3>Skills</h3>
-      <div class="skills-container">
-        {
-          skills.map((skillGroup, index) => (
-            <div class="skill-group">
-              <h4>{skillGroup.category}</h4>
-              <div class="skill-tags">
-                {skillGroup.items.map((skill, idx) => (
-                  <span class="skill-tag">{skill}</span>
-                ))}
-              </div>
+  <div class="section-experience">
+    <h3>Experience</h3>
+    <div class="timeline">
+      {
+        experience.map((item, index) => (
+          <div class="timeline-item">
+            <div class="timeline-dot" />
+            <div class="timeline-content">
+              <h4>{item.position}</h4>
+              <h5>{item.company}</h5>
+              <p class="timeline-period">{item.period}</p>
+              <p>{item.description}</p>
             </div>
-          ))
-        }
-      </div>
+          </div>
+        ))
+      }
     </div>
+  </div>
 
-    <div class="section-experience">
-      <h3>Experience</h3>
-      <div class="timeline">
-        {
-          experience.map((item, index) => (
-            <div class="timeline-item">
-              <div class="timeline-dot" />
-              <div class="timeline-content">
-                <h4>{item.position}</h4>
-                <h5>{item.company}</h5>
-                <p class="timeline-period">{item.period}</p>
-                <p>{item.description}</p>
-              </div>
+  <div class="section-education">
+    <h3>Education</h3>
+    <div class="timeline">
+      {
+        education.map((item, index) => (
+          <div class="timeline-item">
+            <div class="timeline-dot" />
+            <div class="timeline-content">
+              <h4>{item.degree}</h4>
+              <h5>{item.institution}</h5>
+              <p class="timeline-period">{item.period}</p>
+              <p>{item.description}</p>
             </div>
-          ))
-        }
-      </div>
-    </div>
-
-    <div class="section-education">
-      <h3>Education</h3>
-      <div class="timeline">
-        {
-          education.map((item, index) => (
-            <div class="timeline-item">
-              <div class="timeline-dot" />
-              <div class="timeline-content">
-                <h4>{item.degree}</h4>
-                <h5>{item.institution}</h5>
-                <p class="timeline-period">{item.period}</p>
-                <p>{item.description}</p>
-              </div>
-            </div>
-          ))
-        }
-      </div>
+          </div>
+        ))
+      }
     </div>
   </div>
 </div>
