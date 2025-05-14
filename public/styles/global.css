@@ -1,8 +1,6 @@
 /* Base Styles */
 @import url("https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Share+Tech+Mono&display=swap");
 
-
-
 * {
   box-sizing: border-box;
   margin: 0;
@@ -84,12 +82,10 @@ h6 {
   transform: translate(-2px, -2px);
 }
 
-
 p {
   margin-bottom: 1rem;
   text-shadow: 0 0 2px rgba(230, 237, 243, 0.3);
 }
-
 
 .section {
   padding: 6rem 0;
@@ -220,7 +216,6 @@ label {
   text-shadow: 0 0 10px var(--primary-glow);
 }
 
-
 /* Consistent cyberpunk styling for tech tags */
 .tech-tag {
   font-size: 0.8rem;
@@ -335,7 +330,7 @@ label {
 }
 
 .about-section {
-  margin-top: -2rem;;
+  margin-top: -2rem;
   position: relative;
   /* overflow: hidden; */
 }
@@ -360,7 +355,6 @@ label {
   z-index: -1;
   animation: glitch 3s infinite;
 }
-
 
 .container {
   position: relative;
