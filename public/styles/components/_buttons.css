@@ -1,31 +1,271 @@
+@import url("https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700&family=Share+Tech+Mono&display=swap");
 
-/* Default Button Style */
-.project-links .btn {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.5rem;
-  font-size: 0.9rem;
-  padding: 0.5rem 1rem;
-  font-family: "Orbitron", sans-serif;
-  letter-spacing: 0.5px;
-  transition: all 0.3s ease;
-  position: relative;
+/* Projects Container */
+.projects-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+/* Project Card */
+.project-card {
+  background-color: var(--card-bg);
+  border-radius: 8px;
   overflow: hidden;
+  box-shadow: 0 0 15px rgba(47, 232, 232, 0.2), 0 0 30px rgba(47, 232, 232, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  font-family: "Share Tech Mono", monospace;
+  border: 1px solid rgba(47, 232, 232, 0.3);
+  z-index: 1;
+}
+
+/* Glowing border effect */
+.project-card::before {
+  content: "";
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  border-radius: 10px;
+  background: linear-gradient(
+    45deg,
+    transparent,
+    var(--primary-color),
+    transparent
+  );
+  background-size: 400% 400%;
+  z-index: -1;
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  animation: border-animation 3s ease infinite;
+}
+
+.project-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(47, 232, 232, 0.3),
+    0 0 15px rgba(47, 232, 232, 0.5);
+}
+
+.project-card:hover::before {
+  opacity: 1;
+  animation: border-flow 3s linear infinite;
+}
+
+.project-card.featured {
+  border: 1px solid var(--primary-color);
+  box-shadow: 0 0 15px rgba(47, 232, 232, 0.3),
+    0 0 30px rgba(47, 232, 232, 0.15);
+}
+
+.project-card.featured::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--primary-color),
+    transparent
+  );
+  animation: scan-line 3s linear infinite;
+}
+
+/* Project Image */
+.project-image {
+  position: relative;
+  height: 200px;
+  overflow: hidden;
+}
+
+.project-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+  filter: contrast(1.1) saturate(1.1);
+}
+
+.image-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    135deg,
+    rgba(47, 232, 232, 0.2) 0%,
+    rgba(8, 11, 22, 0.6) 100%
+  );
+  mix-blend-mode: hard-light;
+}
+
+/* Grid overlay effect */
+.project-image::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: linear-gradient(
+      to right,
+      rgba(47, 232, 232, 0.1) 1px,
+      transparent 1px
+    ),
+    linear-gradient(to bottom, rgba(47, 232, 232, 0.1) 1px, transparent 1px);
+  background-size: 20px 20px;
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+.project-card:hover .project-image img {
+  transform: scale(1.05);
+}
+
+/* Featured Badge */
+.featured-badge {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
   background: linear-gradient(
     to right,
     var(--primary-dark),
     var(--primary-color)
   );
   color: var(--bg-dark);
+  padding: 0.25rem 0.75rem;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  font-family: "Orbitron", sans-serif;
+  letter-spacing: 0.5px;
+  box-shadow: 0 0 10px rgba(47, 232, 232, 0.7);
+  z-index: 2;
+  animation: pulse 2s infinite;
+}
+
+/* Project Content */
+.project-content {
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  position: relative;
+  z-index: 1;
+  height: 100%;
+}
+
+.project-header {
+  margin-bottom: 1rem;
+}
+
+/* Project Title */
+.project-title {
+  font-family: "Orbitron", sans-serif;
+  font-size: 1.25rem;
+  margin: 0 0 0.75rem 0;
+  color: var(--primary-color);
+  text-shadow: 0 0 5px rgba(47, 232, 232, 0.5);
+  font-weight: 600;
+  position: relative;
+  display: inline-block;
+  letter-spacing: 1px;
+}
+
+.project-title::after {
+  content: "";
+  position: absolute;
+  bottom: -3px;
+  left: 0;
+  width: 50%;
+  height: 1px;
+  background-color: var(--primary-color);
+  box-shadow: 0 0 8px var(--primary-color);
+}
+
+/* Project Description */
+.project-description {
+  color: var(--text-color);
+  font-size: 0.95rem;
+  margin-bottom: 1.5rem;
+  flex: 1;
+  line-height: 1.6;
+  font-family: "Share Tech Mono", monospace;
+}
+
+/* Tech Tags */
+.project-tech {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.tech-tag {
+  background-color: rgba(47, 232, 232, 0.1);
+  color: var(--primary-color);
+  padding: 0.25rem 0.75rem;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 500;
+  border: 1px solid rgba(47, 232, 232, 0.3);
+  transition: all 0.3s ease;
+  font-family: "Share Tech Mono", monospace;
+  letter-spacing: 0.5px;
+}
+
+.tech-tag:hover {
+  background-color: rgba(47, 232, 232, 0.2);
+  box-shadow: 0 0 8px rgba(47, 232, 232, 0.5);
+}
+
+/* Project Links */
+.project-links {
+  display: flex;
+  gap: 1rem;
+  margin-top: auto;
+}
+
+/* Button Styles */
+.btn {
+  font-family: "Orbitron", sans-serif;
+  display: inline-block;
+  padding: 0.8rem 1.8rem;
+  background: linear-gradient(
+    to right,
+    var(--primary-dark),
+    var(--primary-color)
+  );
+  color: var(--bg-dark);
+  text-decoration: none;
   border: none;
   border-radius: 4px;
   font-weight: 600;
-  text-decoration: none;
-  box-shadow: 0 0 8px rgba(47, 232, 232, 0.4);
+  letter-spacing: 1px;
+  font-size: 1rem;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  z-index: 1;
+  text-align: center;
+  box-shadow: 0 0 10px var(--primary-glow, rgba(47, 232, 232, 0.7));
+  cursor: pointer;
+  text-transform: uppercase;
 }
 
-.project-links .btn::before {
+.btn::before {
   content: "";
   position: absolute;
   top: 0;
@@ -39,25 +279,37 @@
     transparent
   );
   transition: 0.5s;
-  z-index: 1;
+  z-index: -1;
 }
 
-.project-links .btn:hover::before {
+.btn:hover::before {
   left: 100%;
 }
 
-.project-links .btn:hover {
+.btn:hover {
   transform: translateY(-2px);
   box-shadow: 0 0 15px rgba(47, 232, 232, 0.6);
+}
+
+/* Project Links Button Specific Styles */
+.project-links .btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  font-size: 0.9rem;
+  padding: 0.5rem 1rem;
+  text-transform: none;
 }
 
 /* Outline Button Style */
 .btn-outline {
   background: transparent !important;
-  border: 1px solid var(--primary-color) !important;
+  border: 2px solid var(--primary-color) !important;
   color: var(--primary-color) !important;
   position: relative;
   z-index: 1;
+  overflow: hidden;
 }
 
 .btn-outline::after {
@@ -84,53 +336,6 @@
   z-index: 2;
 }
 
-/* Button styles */
-.btn {
-  font-family: "Orbitron", sans-serif;
-  display: inline-block;
-  padding: 0.8rem 1.8rem;
-  background: linear-gradient(
-    to right,
-    var(--primary-dark, #0a7b7b),
-    var(--primary-color, #2fe8e8)
-  );
-  color: var(--bg-dark, #080b16);
-  text-decoration: none;
-  border: none;
-  border-radius: 4px;
-  font-weight: 600;
-  letter-spacing: 1px;
-  font-size: 1rem;
-  position: relative;
-  overflow: hidden;
-  transition: all 0.3s ease;
-  z-index: 1;
-  text-align: center;
-  box-shadow: 0 0 10px var(--primary-glow, rgba(47, 232, 232, 0.7));
-  cursor: pointer;
-}
-
-.btn::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: -100%;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(
-    90deg,
-    transparent,
-    rgba(255, 255, 255, 0.2),
-    transparent
-  );
-  transition: 0.5s;
-  z-index: -1;
-}
-
-.btn:hover::before {
-  left: 100%;
-}
-
 /* Animated underline effect for links */
 a:not(.btn)::after {
   content: "";
@@ -148,145 +353,118 @@ a:not(.btn):hover::after {
   width: 100%;
 }
 
-/* Cyberpunk button styling */
-.btn {
-  display: inline-block;
-  padding: 0.8rem 1.8rem;
-  background: linear-gradient(
-    to right,
-    var(--primary-dark),
-    var(--primary-color)
-  );
-  color: var(--bg-dark);
-  border: 1px solid var(--primary-color);
+/* Alternative Link Styles */
+.project-link {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: "Share Tech Mono", monospace;
+  font-size: 0.9rem;
+  padding: 0.5rem 1rem;
   border-radius: 4px;
-  cursor: pointer;
-  font-weight: 600;
-  text-align: center;
-  text-decoration: none;
-  font-family: "Orbitron", sans-serif;
-  letter-spacing: 1px;
-  position: relative;
-  overflow: hidden;
   transition: all 0.3s ease;
-  text-transform: uppercase;
-  z-index: 1;
-  box-shadow: 0 0 10px var(--primary-glow);
+  border: 1px solid rgba(47, 232, 232, 0.3);
 }
 
-.btn::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: -100%;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(
-    90deg,
-    transparent,
-    rgba(255, 255, 255, 0.2),
-    transparent
-  );
-  transition: 0.5s;
-  z-index: -1;
+.project-link:hover {
+  transform: translateY(-2px);
 }
 
-.btn-outline {
-  background: transparent;
-  border: 2px solid var(--primary-color);
+.project-link.github {
+  background-color: rgba(47, 232, 232, 0.1);
   color: var(--primary-color);
-  position: relative;
-  z-index: 1;
-  overflow: hidden;
 }
 
-.btn-outline::after {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 0;
-  height: 100%;
-  background: var(--primary-color);
-  transition: 0.5s;
-  z-index: -1;
+.project-link.live {
+  background-color: rgba(232, 68, 232, 0.1);
+  color: var(--secondary-color);
+  border-color: rgba(232, 68, 232, 0.3);
 }
 
-@media (max-width: 480px) {
+.project-link.github:hover {
+  background-color: rgba(47, 232, 232, 0.2);
+  box-shadow: 0 0 8px var(--primary-glow);
+}
 
-  .btn {
-    padding: 0.6rem 1.2rem;
-    font-size: 0.9rem;
+.project-link.live:hover {
+  background-color: rgba(232, 68, 232, 0.2);
+  box-shadow: 0 0 8px var(--secondary-glow);
+}
+
+.link-icon {
+  display: flex;
+  align-items: center;
+}
+
+/* SVG styling */
+svg {
+  stroke: currentColor;
+  transition: all 0.3s ease;
+}
+
+/* Media Queries */
+@media (max-width: 768px) {
+  .projects-container {
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  }
+  
+  .project-links {
+    flex-direction: column;
   }
 }
 
-
-.btn {
-  font-family: "Orbitron", sans-serif;
-  display: inline-block;
-  padding: 0.8rem 1.8rem;
-  background: linear-gradient(
-    to right,
-    var(--primary-dark),
-    var(--primary-color)
-  );
-  color: var(--bg-dark);
-  text-decoration: none;
-  border: none;
-  border-radius: 4px;
-  font-weight: 600;
-  letter-spacing: 1px;
-  font-size: 1rem;
-  position: relative;
-  overflow: hidden;
-  transition: all 0.3s ease;
-  z-index: 1;
-  text-align: center;
-  box-shadow: 0 0 10px var(--primary-glow);
+@media (max-width: 480px) {
+  .projects-container {
+    grid-template-columns: 1fr;
+  }
+  
+  .project-title {
+    font-size: 1.3rem;
+  }
 }
 
-.btn::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: -100%;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(
-    90deg,
-    transparent,
-    rgba(255, 255, 255, 0.2),
-    transparent
-  );
-  transition: 0.5s;
-  z-index: -1;
+/* Animation Keyframes */
+@keyframes border-flow {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
 }
 
-.btn-outline {
-  background: transparent;
-  border: 2px solid var(--primary-color);
-  color: var(--primary-color);
-  position: relative;
-  z-index: 1;
-  overflow: hidden;
+@keyframes border-animation {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
 }
 
-.btn-outline::after {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 0;
-  height: 100%;
-  background: var(--primary-color);
-  transition: 0.5s;
-  z-index: -1;
+@keyframes scan-line {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
 }
 
-.btn-outline:hover {
-  color: var(--bg-dark);
-}
-
-.btn-outline:hover::after {
-  width: 100%;
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 10px rgba(47, 232, 232, 0.7);
+  }
+  50% {
+    box-shadow: 0 0 20px rgba(47, 232, 232, 0.9);
+  }
+  100% {
+    box-shadow: 0 0 10px rgba(47, 232, 232, 0.7);
+  }
 }
